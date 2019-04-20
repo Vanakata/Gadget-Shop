@@ -1,0 +1,57 @@
+.welcome-wrapper {
+    width: 70%;
+    margin: 0 auto;
+    padding: 3em 0;
+    text-align: center;
+    color: whitesmoke;
+    
+}
+
+div.welcome-wrapper p {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+
+div.welcome {
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+div.welcome a {
+    padding: 10px;
+    border-radius: 0.5em;
+    outline: none;
+    text-decoration: none;
+    color: white;
+    margin: 10px;
+    border: 2px solid rgb(233, 233, 232);
+    background-color: #333333;
+    background-size: auto;
+}
+
+div.welcome a:hover {
+    background-color: white;
+    color: rgb(31, 30, 30);
+    border: 2px solid rgb(41, 41, 41);
+}
+
+div.welcome p {
+    font-size: 18px;
+    margin: 25px
+}
+
+.white {
+    color: orange;
+    font-size: 35px;
+    text-shadow: 3px 2px black;
+    margin:-30px;
+}
+
+.greeting {
+    color:orange;
+    text-shadow: 3px 2px black;
+    font-size: 55px;
+
+}

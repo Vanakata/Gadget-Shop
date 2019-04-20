@@ -1,0 +1,30 @@
+nav.navbar-menu {
+    display: flex;
+    font-family: Montserrat, sans-serif;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-right: 30px;
+    background-color: #333333;
+    background-size: auto;
+    opacity: 0.7;
+    
+}
+
+nav.navbar-menu a {
+    padding: 17px;
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: #dddddd;
+    font-weight: 700;
+    text-transform: uppercase;
+    -webkit-transition: color .25s ease;
+    -moz-transition: color .25s ease;
+    transition: color .25s ease;
+    background-size: auto;
+}
+
+nav.navbar-menu a:hover {
+    color: rgb(239, 248, 239);
+    background-color: rgba(248, 248, 248, 0.274);
+}

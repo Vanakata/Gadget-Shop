@@ -1,0 +1,25 @@
+body {
+    background-color: rgb(10, 10, 10);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%; 
+    background-position: center;
+    min-height: 1000px;
+}
+
+canvas {
+    display: block;
+    position: absolute;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+@media screen and (max-width: 800px){
+    nav.navbar-menu a {
+        width: 100%;       
+        padding: 10px 5px;
+    }
+
+    div.welcome-wrapper > p a{
+        width: 100%;
+    }
+}
