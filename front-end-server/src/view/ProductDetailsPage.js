@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
-import ProductService from "./Product-service";
-import { UserConsumer } from "../user-context";
-import Info from "../product/product-info";
+import ProductService from "../components/services/product-service";
+import { UserConsumer } from "../components/user-context";
+import ProductInfo from "../components/product/user/product-info";
 import { toast } from "react-toastify"
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -9,7 +9,6 @@ class ProductDetails extends Component {
 
     constructor(props) {
         super(props);
-        console.log(props)
         this.state = {
 
             product: {},
@@ -40,7 +39,7 @@ class ProductDetails extends Component {
                                 <h1 className="text-center text-light">{product.title}</h1>
                             </div>
                         </div>
-                        <Info
+                        <ProductInfo
                             product={product}
                             username={username} />
                     </div>

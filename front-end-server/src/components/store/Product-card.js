@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import ProductService from "./Product-service";
+import ProductService from "../services/product-service";
 import { Link } from "react-router-dom"
 import { UserConsumer } from "../user-context";
-import "../product/Product.css"
+import "../../css/Product.css"
 
 class ProductCard extends Component {
     addToCart = () => {
@@ -13,7 +13,7 @@ class ProductCard extends Component {
     static service = new ProductService();
     render() {
         const { product } = this.props;
-       
+
         const { isLoggedIn, isAdmin } = this.props;
 
         return (

@@ -42,15 +42,16 @@ class ProductService {
     }
     removeFromCart = (product) => {
         let productAsJson = window.localStorage.getItem("products") || JSON.stringify([]);
-        const products = JSON.stringify(productAsJson);
-        products.push(product);
+        const products = JSON.parse(productAsJson);
+        const index = products.findIndex((currentProduct) => currentProduct._id === product._id)
+        products.splice(index, 1);
         window.localStorage.setItem("products", JSON.stringify(products));
 
-        toast.success(`${product.title} was removed from your cart`);
+        // toast.success(`${product.title} was removed from your cart`);
         return true;
     }
 
-    emptyCart = ()=> {
+    emptyCart = () => {
         window.localStorage.removeItem("products")
     }
 }

@@ -4,18 +4,22 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import { defaultUserState, UserProvider } from "../src/components/user-context";
 import NavBar from "../src/components/navBar/NavBar";
-import Login from "../src/components/auth/LoginPage";
-import Register from "../src/components/auth/RegisterPage";
-import CreateProduct from "../src/components/product/Create-product";
-import HomePage from "../src/components/home/HomePage";
-import DeleteProduct from "../src/components/product/delete-product";
-import ProductDetails from "../src/components/product/product-details";
+import Login from "./view/LoginPage";
+import Register from "./view/RegisterPage";
+import AuthorizeRoute from "../src/components/authorized-route";
+import AdminRoute from "../src/components/admin-route";
+import CreateProduct from "./view/CreateProductPage";
+import HomePage from "./view/HomePage";
+import DeleteProduct from "./components/product/admin/delete-product";
+import PendingOrders from "../src/view/PendingOrders";
+import ProductDetails from "./view/ProductDetailsPage";
 import 'react-toastify/dist/ReactToastify.css';
-import "../src/App.css";
+import "../src/css/App.css";
 import 'bootstrap/dist/css/bootstrap.css';
-import EditProduct from './components/product/edit-product';
-import Store from './components/store/store-page';
-import Cart from "../src/components/orders/cart";
+import EditProduct from './view/EditProductPage';
+import Store from './view/StorePage';
+import Cart from "./view/CartPage";
+import MyOrders from "./view/MyOrdersPage";
 
 
 class App extends Component {
@@ -60,12 +64,14 @@ class App extends Component {
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/register" component={Register} />
-                <Route exact path="/admin/create" component={CreateProduct} />
-                <Route exact path="/admin/product/delete/:id" component={DeleteProduct} />
-                <Route exact path="/admin/product/edit/:id" component={EditProduct}/>
-                <Route exact path="/details/:id" component={ProductDetails} />
-                <Route exact path ="/store" component = {Store}/>
-                <Route exact path ="/cart" component = {Cart}/>
+                <AdminRoute exact path="/admin/create" component={CreateProduct} />
+                <AdminRoute exact path="/admin/product/delete/:id" component={DeleteProduct} />
+                <AdminRoute exact path="/admin/product/edit/:id" component={EditProduct} />
+                <AdminRoute exact path="/admin/orders/pending" component={PendingOrders}/>
+                <AuthorizeRoute exact path="/details/:id" component={ProductDetails} />
+                <AuthorizeRoute exact path="/store" component={Store} />
+                <AuthorizeRoute exact path="/cart" component={Cart} />
+                <AuthorizeRoute exact path="/orders" component={MyOrders} />
               </Switch>
             </UserProvider>
           </Fragment>

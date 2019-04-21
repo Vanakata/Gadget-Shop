@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from "react";
-import ProductService from "../product/Product-service";
+import ProductService from "../components/services/product-service";
 import { toast } from "react-toastify";
-import OrdersService from "./orders-service";
-import ProductCart from "./product-cart";
-import { UserConsumer } from "../user-context";
+import OrdersService from "../components/services/orders-service";
+import ProductCart from "../components/orders/user/product-cart";
+import { UserConsumer } from "../components/user-context";
+import 'bootstrap/dist/css/bootstrap.css';
 
 class Cart extends Component {
     constructor(props) {
@@ -61,9 +62,9 @@ class Cart extends Component {
                             <table id="cart" className="table table-condensed table-borderless">
                                 <thead className="white">
                                     <tr>
-                                        <th style={{ width: "50px" }}>Product</th>
-                                        <th style={{ width: "10px" }}>Price</th>
-                                        <th className="text-center" style={{ width: "22px" }}>Subtotal</th>
+                                        <th style={{ width: "50px" }}>Products:</th>
+                                        <th style={{ width: "10px" }}>Price:</th>
+                                        <th className="text-center" style={{ width: "22px" }}>Subtotal:</th>
                                         <th style={{ width: "10px" }}></th>
                                     </tr>
                                 </thead>
@@ -76,7 +77,7 @@ class Cart extends Component {
                                 </tbody>
                                 <tfoot className="white">
                                     <tr>
-                                        <td><a className="btn btn-warning" href="/store"><i className="fa fa-angle-left"></i> Continue Shopping</a></td>
+                                        <td><a className="btn btn-warning text-light" href="/store"><i className="fa fa-angle-left"></i> Continue Shopping</a></td>
                                         <td colSpan="2" className="hidden-xs"></td>
                                         <td className="hidden-xs text-center"><strong>Total ${totalAmount}</strong></td>
                                         <td>

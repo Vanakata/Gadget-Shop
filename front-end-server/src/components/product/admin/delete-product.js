@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import ProductService from "./Product-service";
+import ProductService from "../../services/product-service";
 import { toast } from "react-toastify"
 import { Redirect, Link } from "react-router-dom";
+
 class DeleteProduct extends Component {
     constructor(props) {
         super(props);

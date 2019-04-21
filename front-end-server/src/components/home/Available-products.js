@@ -1,7 +1,7 @@
 import React, { Component,Fragment } from "react";
-import ProductService from "../product/Product-service"
-import ProductCard from "../../components/product/Product-card"
-class TopProducts extends Component {
+import ProductService from "../services/product-service"
+import ProductCard from "../store/Product-card"
+class AvailableProducts extends Component {
 
     constructor(props) {
         super(props);
@@ -38,7 +38,7 @@ class TopProducts extends Component {
     }
     async componentDidMount() {
         try {
-            const products = await TopProducts.service.getTopRatedProducts();
+            const products = await AvailableProducts.service.getTopRatedProducts();
             this.setState({products})
         } catch(error){
             console.log(error);
@@ -46,4 +46,4 @@ class TopProducts extends Component {
         }
     }
 }
-export default TopProducts;
+export default AvailableProducts;

@@ -1,16 +1,13 @@
 import React, { Component } from "react";
-import ProductService from "./Product-service"
+import ProductService from "../components/services/product-service";
 import { toast } from "react-toastify";
-import { Redirect } from "react-router-dom"
-import "../product/Create-product.css"
+import { Redirect } from "react-router-dom";
 
-class CreateProduct extends Component {
+class EditProduct extends Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
-
             title: "",
             type: "",
             manufacturer: "",
@@ -18,14 +15,14 @@ class CreateProduct extends Component {
             description: "",
             price: "",
             images: "",
-            isCreated: false,
-
+            error: ""
         }
     }
     static service = new ProductService();
+
     handleChange = ({ target }) => {
         this.setState({
-            [target.name]: target.value,
+            [target.name]: target.value
         })
     }
     handleSubmit = (event) => {
@@ -48,43 +45,51 @@ class CreateProduct extends Component {
             description,
             price,
             images,
+
         }
+        const id = this.props.match.params.id;
+
         this.setState({
             error: ""
         }, async () => {
             try {
-                const result = await CreateProduct.service.create(credentials);
+                const result = await EditProduct.service.edit(id, credentials);
+
                 if (!result.success) {
-                   
                     const errors = Object.values(result.errors).join(" ");
                     throw new Error(errors);
                 }
-                toast.success("Product was created successfully");
+                toast.success("Gadget was edited successfully");
+               
                 this.setState({
                     isCreated: true
-                });
+                })
+
             } catch (error) {
                 toast.error(error.toString());
-
             }
+
         })
+
     }
-
     render() {
-
-        const { title, type, manufacturer, trailer, description, price, images, isCreated } = this.state;
+        const { title, type, manufacturer, trailer, description, price, images, isCreated, error } = this.state
 
         if (isCreated) {
-
             return (
                 <Redirect to="/" />
             )
-        } else {
+        }
 
-            return (
-                <div className="form-wrapper">
-                    <h1>Create New Gadget</h1>
-                    <form onSubmit={this.handleSubmit}>
+        return (
+            <div className="form-wrapper">
+            {
+                error.length
+                    ? <div>Something went wrong: {error}</div>
+                    : null
+            }
+                <h1>Edit Product</h1>
+                <form onSubmit={this.handleSubmit}>
                         <div className="form-group">
                             <label>Title</label>
                             <input
@@ -96,7 +101,7 @@ class CreateProduct extends Component {
                                 onChange={this.handleChange}
                             />
                         </div>
-                        <div>
+                        <div className="form-group">
                             <label>Type</label>
                             <input
                                 type="text"
@@ -107,7 +112,7 @@ class CreateProduct extends Component {
                                 onChange={this.handleChange}
                             />
                         </div>
-                        <div>
+                        <div className="form-group">
                             <label>Manufacturer</label>
                             <input
                                 type="text"
@@ -118,7 +123,7 @@ class CreateProduct extends Component {
                                 onChange={this.handleChange}
                             />
                         </div>
-                        <div>
+                        <div className="form-group">
                             <label>Video Trailer</label>
                             <input
                                 type="text"
@@ -129,7 +134,7 @@ class CreateProduct extends Component {
                                 onChange={this.handleChange}
                             />
                         </div>
-                        <div>
+                        <div className="form-group">
                             <label>Description</label>
                             <input
                                 type="text"
@@ -140,8 +145,8 @@ class CreateProduct extends Component {
                                 onChange={this.handleChange}
                             />
                         </div>
-                        <div>
-                            <label>Price</label>
+                        <div className="form-group">
+                            <label>Price $</label>
                             <input
                                 type="number"
                                 name="price"
@@ -151,7 +156,7 @@ class CreateProduct extends Component {
                                 onChange={this.handleChange}
                             />
                         </div>
-                        <div>
+                        <div className="form-group">
                             <label>Image</label>
                             <input
                                 type="text"
@@ -164,11 +169,34 @@ class CreateProduct extends Component {
                         </div>
                         <input
                             type="submit"
-                            value="Create" />
-                    </form>
-                </div>
-            )
+                            value="Edit" />
+                </form>
+            </div>
+        );
+    }
+    async componentDidMount() {
+        try {
+
+            const productId = this.props.match.params.id;
+            const products = await EditProduct.service.getTopRatedProducts();
+            const product = products.find(product => product._id === productId);
+
+            this.setState({
+                title: product.title,
+                manufacturer: product.manufacturer,
+                type: product.type,
+                trailer: product.trailer,
+                description: product.description,
+                price: product.price,
+                images: product.images,
+                error: ""
+            })
+        } catch (error) {
+            console.log(error);
+
+
         }
     }
+
 }
-export default CreateProduct;
+export default EditProduct;

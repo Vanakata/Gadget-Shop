@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
-import ProductService from "../product/Product-service"
-import ProductCard from "../product/Product-card"
+import ProductService from "../components/services/product-service"
+import ProductCard from "../components/store/Product-card"
 
 class Store extends Component {
     constructor(props) {
@@ -31,7 +31,6 @@ class Store extends Component {
                             <div className='col-md-12'>
                                 <h1 className='jumbotron-heading text-center white'>Store</h1>
                                 <form onSubmit={this.submitQuery} className='form-inline md-form form-sm active-cyan active-cyan-2'>
-                                    <i className='fa fa-search' aria-hidden='true' />
                                     <input
                                         className='form-control form-control-sm ml-3 w-75'
                                         type='text'
@@ -61,9 +60,9 @@ class Store extends Component {
     async componentDidMount() {
         try {
             const products = await Store.service.getTopRatedProducts();
-            this.setState({products});
+            this.setState({ products });
         } catch (error) {
-                console.log(error);
+            console.log(error);
         }
     }
 }

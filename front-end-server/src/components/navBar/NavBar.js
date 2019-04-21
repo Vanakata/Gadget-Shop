@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom"
-import "../navBar/NavBar2.css"
+import "../../css/NavBar2.css"
 import { UserConsumer } from "../user-context"
 
 

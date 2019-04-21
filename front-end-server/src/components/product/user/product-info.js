@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react"
-import ProductService from "./Product-service";
-import { UserConsumer } from "../user-context"
-import Trailer from "../product/video-trailer"
+import ProductService from "../../services/product-service";
+import { UserConsumer } from "../../user-context"
+import Trailer from "./video-trailer"
 import 'bootstrap/dist/css/bootstrap.css';
 
 
@@ -51,17 +51,17 @@ class ProductInfo extends Component {
 
         return (
             <Fragment>
-                <div className='row space-top bg-success'>
-                    <div className='col-md-6'>
+                <div className='row space-top '>
+                    <div className='col-md-6 bg-light'>
                         <img
                             src={product.images}
                             alt={product.title}
                         />
 
-                        <p><span className='text-light h3'>Manufacturer:</span> <span className='text-light h3'>{product.manufacturer}</span></p>
-                        <p><span className='text-light h3'>Type:</span> <span className='text-light h3'>{product.type}</span></p>
-                        <p><span className='text-light h3'>Price:</span> <span className='text-light h3'>${product.price}</span></p>
-                        <p><span className='text-light h3'>Likes:</span> <span className='text-light h3'>{likes}</span></p>
+                        <p><span className='text-warning h3'>Manufacturer:</span> <span className='text-warning h3'>{product.manufacturer}</span></p>
+                        <p><span className='text-warning h3'>Type:</span> <span className='text-warning h3'>{product.type}</span></p>
+                        <p><span className='text-warning h3'>Price:</span> <span className='text-warning h3'>${product.price}</span></p>
+                        <p><span className='text-warning h3'>Likes:</span> <span className='text-warning h3'>{likes}</span></p>
 
                         {
                             isLike
@@ -84,7 +84,7 @@ class ProductInfo extends Component {
                                 {this.state.showTrailer ? <Trailer product={product} /> : null}
                                 {this.state.showDescription
                                     ?
-                                    <p align="center" className="h4 bg-success text-light"><span >Description</span>: {product.description}</p>
+                                    <p align="center" className="h4 bg-light text-warning"><span >Description</span>: {product.description}</p>
                                     : null}
                             </Fragment>)
                         }

@@ -44,12 +44,12 @@ div.welcome p {
 
 .white {
     color: orange;
-    font-size: 35px;
+    font-size: 25px;
     text-shadow: 3px 2px black;
     margin:-30px;
 }
 
-.greeting {
+div.greeting p {
     color:orange;
     text-shadow: 3px 2px black;
     font-size: 55px;

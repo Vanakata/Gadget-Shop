@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom"
-import AuthenticationService from "./authentication-service";
-import { UserConsumer } from "../user-context"
+import AuthenticationService from "../components/services/authentication-service";
+import { UserConsumer } from "../components/user-context"
 import { toast } from "react-toastify"
-import "../auth/LoginStyle.css"
+import "../css/LoginStyle.css"
 
 
 class Login extends Component {

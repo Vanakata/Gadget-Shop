@@ -1,8 +1,8 @@
 import React from "react";
-import { UserConsumer } from "../user-context";
+import { UserConsumer } from "../components/user-context";
 import { Link } from "react-router-dom";
-import TopProducts from "../home/Top-products";
-import "../home/HomePage.css";
+import AvailableProducts from "../components/home/Available-products";
+import "../css/HomePageStyle.css";
 
 
 const HomePage = ({ username, isLoggedIn, isAdmin }) => {
@@ -16,7 +16,10 @@ const HomePage = ({ username, isLoggedIn, isAdmin }) => {
                     isLoggedIn
                         ?
                         <div className="welcome">
-                            <div className="greeting">Welcome to our store,{username}</div>
+                            <div className="greeting">
+                            <p>Welcome to our store,{username}!</p>
+                            <p>These are our latest gadgets:</p>
+                            </div>
                             <p>
                                 <Link to="/store" >Go To Store</Link>
                                 {isAdmin
@@ -28,13 +31,11 @@ const HomePage = ({ username, isLoggedIn, isAdmin }) => {
                             </p>
                         </div>
                         :
-                        null
+                        <ul className="white">
+                            <h2>These cool gadgets are just in a few clicks away! Just log in!</h2>
+                        </ul>
                 }
-                <ul className="white">
-                    <h2>Most recent gadgets:</h2>
-                    <TopProducts />
-
-                </ul>
+                <AvailableProducts />
 
             </div>
         </main>

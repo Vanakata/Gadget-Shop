@@ -13,6 +13,12 @@ canvas {
     margin-top: 0px;
     margin-bottom: 0px;
 }
+img {
+    width: 230px;
+    max-height: 400px;
+    height: auto;
+    margin: 0 auto;
+}
 @media screen and (max-width: 800px){
     nav.navbar-menu a {
         width: 100%;       

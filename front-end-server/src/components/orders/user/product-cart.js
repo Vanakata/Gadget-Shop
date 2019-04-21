@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import 'bootstrap/dist/css/bootstrap.css';
 
 class ProductCart extends Component {
 
@@ -21,7 +22,7 @@ class ProductCart extends Component {
                                 className="cart-image" />
                         </div>
                         <div className="col-sm-8">
-                            <h4 className="nomargin">{product.title}</h4>
+                            <h5 className="nomargin text-warning">{product.title}</h5>
 
                         </div>
                     </div>
@@ -32,7 +33,7 @@ class ProductCart extends Component {
                     <button
                         className="btn btn-danger btn-sm"
                         onClick={this.remove}>
-                        <i className="fa fa-trash-o"></i>
+                       Cancel Order
                     </button>
                 </td>
             </tr>

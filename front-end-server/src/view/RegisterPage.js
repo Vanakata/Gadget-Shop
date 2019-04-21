@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import AuthenticationService from "./authentication-service";
+import AuthenticationService from "../components/services/authentication-service";
 import { Redirect } from "react-router-dom"
-import { UserConsumer } from "../user-context";
+import { UserConsumer } from "../components/user-context";
 import { toast } from "react-toastify"
-import "../auth/RegisterStyle.css"
+import "../css/RegisterStyle.css"
 
 class Register extends Component {
     constructor(props) {
