@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
-import { NavLink, Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import "../navBar/NavBar2.css"
-import {UserConsumer} from "../user-context"
+import { UserConsumer } from "../user-context"
 
 
 const NavBar = ({ isAdmin, isLoggedIn, logout, }) => {

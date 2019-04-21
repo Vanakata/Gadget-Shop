@@ -53,6 +53,11 @@ class ProductInfo extends Component {
             <Fragment>
                 <div className='row space-top bg-success'>
                     <div className='col-md-6'>
+                        <img
+                            src={product.images}
+                            alt={product.title}
+                        />
+
                         <p><span className='text-light h3'>Manufacturer:</span> <span className='text-light h3'>{product.manufacturer}</span></p>
                         <p><span className='text-light h3'>Type:</span> <span className='text-light h3'>{product.type}</span></p>
                         <p><span className='text-light h3'>Price:</span> <span className='text-light h3'>${product.price}</span></p>
@@ -73,13 +78,13 @@ class ProductInfo extends Component {
 
                 </div>
                 <div className='row mt-4 mb-5'>
-                    <div className='col-md-8 offset-md-2 bg-success h2'>
+                    <div className='col-md-8 offset-md-2'>
                         {
                             (<Fragment>
                                 {this.state.showTrailer ? <Trailer product={product} /> : null}
                                 {this.state.showDescription
                                     ?
-                                    <p align="center"><span className='text-progres h2'>Description</span>: {product.description}</p>
+                                    <p align="center" className="h4 bg-success text-light"><span >Description</span>: {product.description}</p>
                                     : null}
                             </Fragment>)
                         }
@@ -118,6 +123,6 @@ const ProductInfoWithContext = (props) => {
             }
         </UserConsumer>
     )
-    debugger;
+
 }
 export default ProductInfoWithContext;

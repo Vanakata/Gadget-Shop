@@ -1,5 +1,5 @@
 import React, { Component,Fragment } from "react";
-import ProductService from "../../components/product/Product-service"
+import ProductService from "../product/Product-service"
 import ProductCard from "../../components/product/Product-card"
 class TopProducts extends Component {
 

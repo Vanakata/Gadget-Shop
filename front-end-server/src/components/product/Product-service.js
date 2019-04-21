@@ -34,7 +34,7 @@ class ProductService {
     addToCart = (product) => {
         let productAsJson = window.localStorage.getItem("products") || JSON.stringify([]);
         const products = JSON.parse(productAsJson);
-        product.push(product);
+        products.push(product);
         window.localStorage.setItem("products", JSON.stringify(products));
 
         toast.success(`${product.title} was added to your cart`)
