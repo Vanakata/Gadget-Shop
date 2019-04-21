@@ -32,7 +32,7 @@ const HomePage = ({ username, isLoggedIn, isAdmin }) => {
                 }
                 <ul className="white">
                     <h2>Most recent gadgets:</h2>
-                    <TopProducts/>
+                    <TopProducts />
 
                 </ul>
 
@@ -42,7 +42,6 @@ const HomePage = ({ username, isLoggedIn, isAdmin }) => {
     )
 }
 const HomePageWithContext = (props) => {
-
     return (
         <UserConsumer>
             {

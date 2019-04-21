@@ -13,6 +13,7 @@ class ProductCard extends Component {
     static service = new ProductService();
     render() {
         const { product } = this.props;
+       
         const { isLoggedIn, isAdmin } = this.props;
 
         return (

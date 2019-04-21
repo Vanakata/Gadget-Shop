@@ -1,10 +1,15 @@
 import React, { Component, Fragment } from "react";
 import ProductService from "./Product-service";
+import { UserConsumer } from "../user-context";
+import Info from "../product/product-info";
+import { toast } from "react-toastify"
+import 'bootstrap/dist/css/bootstrap.css';
 
 class ProductDetails extends Component {
 
     constructor(props) {
         super(props);
+        console.log(props)
         this.state = {
 
             product: {},
@@ -29,18 +34,44 @@ class ProductDetails extends Component {
         return (
             <Fragment>
                 <main>
-                    <div className='container white'>
+                    <div className='container text-light'>
                         <div className='row space-top mb-3'>
                             <div className='col-md-12'>
-                                <h1 className="text-center mt-3">{game.title}</h1>
+                                <h1 className="text-center text-light">{product.title}</h1>
                             </div>
                         </div>
-                        <ProductInfo
-                        product={product}
-                        username={username}/>
+                        <Info
+                            product={product}
+                            username={username} />
                     </div>
                 </main>
             </Fragment>
         )
     }
+    async componentDidMount() {
+
+        try {
+            const productId = this.props.match.params.id;
+            const products = await ProductDetails.service.getTopRatedProducts();
+            const product = products.find(product => product._id === productId)
+
+            this.setState({ product })
+        } catch (error) {
+            toast.error(error.toString());
+
+        }
+    }
 }
+const ProductDetailsWithContext = (props) => {
+    console.log(props);
+    return (
+        <UserConsumer>
+            {
+                ({ username }) => (
+                    <ProductDetails {...props} username={username} />
+                )
+            }
+        </UserConsumer>
+    )
+}
+export default ProductDetailsWithContext;
